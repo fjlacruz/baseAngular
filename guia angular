@@ -1,0 +1,76 @@
+Guia Angular 
+
+npm install -g @angular/cli
+ng new my-dream-app
+cd my-dream-app
+ng version
+ng serve
+
+
+para borrar la cache
+sudo npm cahe verify
+sudo npm cache clear --force
+
+creacion de compoentes
+sudo ng generate component usuarios
+
+Instalar angular material
+sudo npm install angular-material --save
+
+se debe crear un carpeta dentro de app para los modelos
+
+
+ejemplo de atributo de estilos
+[ngStyle]="{'background': config.color}"
+
+Directiva para listar
+<ul>
+  <li *ngFor="let item of usuarios">{{ item.nombres }}</li>
+</ul>
+
+IF
+<span
+      *ngIf="item.estatus == 1"
+      [style.background]="item.estatus == 1 ? 'green' : 'red'"
+      >Activo</span>
+
+Swicht
+
+<ul [ngSwitch]="color">
+  <li *ngSwitchcase="'amarillo'">
+    El color es amarillo
+  </li>
+  <li *ngSwitchcase="'rojo'">
+    El color es rojo
+  </li>
+</ul>
+
+Evento click
+(click)="funcion()"
+
+Blur
+(blur)="funcion()"
+
+ngClass
+[class.estatus]="item.estatus == 1" creamos un hoja de estilo global en assetes y la importamos desde el index.html general
+                                    o en la seccion de styles del archivo angular.json
+[ngClass]="{
+    'style1' : item.estatus == 1,
+    'style2' : item.estatus == 2
+}"
+
+ngTemplate
+
+<div *ngif="identificado; then siIdentificado else noIdentificado" ></div>
+
+<ng-template #siIdentificado>
+  si estas dentificado
+</ng-template>
+<ng-template #noIdentificado>
+   no estas dentificado
+</ng-template>
+
+
+Creacion de servicios
+creamos una carpeta llmada services y dentro:
+sudo ng generate service usuarios

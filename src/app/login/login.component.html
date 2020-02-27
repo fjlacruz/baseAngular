@@ -1,0 +1,23 @@
+<br /><br />
+<form
+  id="login-form"
+  #lForm="ngForm"
+  [formGroup]="loginForm"
+  (ngSubmit)="submitLogin()"
+  novalidate
+>
+  <input
+    mdInput
+    type="text"
+    formControlName="rut"
+    placeholder="rut"
+  /><br /><br />
+  <input
+    mdInput
+    type="text"
+    formControlName="clave"
+    placeholder="clave"
+  /><br /><br />
+
+  <button md-raised-button type="submit" form="login-form">Sign In</button>
+</form>

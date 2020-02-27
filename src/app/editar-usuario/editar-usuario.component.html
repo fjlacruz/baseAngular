@@ -1,0 +1,44 @@
+<div class="container" *ngIf="usuario">
+  <p>Editar Usuario: {{ id_usuario }}</p>
+  <form (ngSubmit)="onSubmit()">
+    <input
+      type="hidden"
+      name="id_usuario"
+      #name="ngModel"
+      [(ngModel)]="usuario.id_usuario"
+      required
+    />
+    <input
+      type="text"
+      name="nombres"
+      #name="ngModel"
+      [(ngModel)]="usuario.nombres"
+      required
+    /><br /><br />
+    <input
+      type="text"
+      name="apellidos"
+      #name="ngModel"
+      [(ngModel)]="usuario.apellidos"
+      required
+    />
+    <br /><br />
+    <input
+      type="text"
+      name="usuario"
+      #name="ngModel"
+      [(ngModel)]="usuario.usuario"
+      required
+    />
+    <br /><br />
+    <input
+      type="text"
+      name="rut"
+      #name="ngModel"
+      [(ngModel)]="usuario.rut"
+      required
+    />
+    <br /><br />
+    <input type="submit" value="Enviar" />
+  </form>
+</div>
