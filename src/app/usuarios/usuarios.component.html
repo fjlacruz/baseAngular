@@ -1,36 +1,49 @@
-<p>{{ titulo }}</p>
-<div *ngIf="!usuarios">
-  Cargando.....
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a [routerLink]="['/']" [routerLinkActive]="['active']" href="#">Login</a
+  >&nbsp;
+  <a [routerLink]="['/lista-usuarios']" [routerLinkActive]="['active']"
+    >Lista de usuarios</a
+  >
+</nav>
+
+<br /><br />
+<div class="container">
+  <p>{{ titulo }}</p>
+  <div *ngIf="!usuarios">
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover">
+    <tr>
+      <td>Nombres</td>
+      <td>Apellidos</td>
+      <td>Usuario</td>
+      <td>Rol</td>
+      <td>Estatus</td>
+      <td>Accion</td>
+    </tr>
+    <tr *ngFor="let item of usuarios">
+      <td>{{ item.nombres }}</td>
+      <td>{{ item.apellidos }}</td>
+      <td>{{ item.usuario }}</td>
+      <td>{{ item.descripcion_rol }}</td>
+      <td>
+        <span *ngIf="item.estatus == 1" class="badge badge-success">Activo</span
+        ><span *ngIf="item.estatus == 2" class="badge badge-danger"
+          >Inactivo</span
+        >
+      </td>
+      <td>
+        <button
+          class="btn btn-primary"
+          [routerLink]="['/editar-usuario', item.id_usuario]"
+        >
+          Editar
+        </button>
+      </td>
+    </tr>
+  </table>
 </div>
-<table border="1">
-  <tr>
-    <td>Nombres</td>
-    <td>Apellidos</td>
-    <td>Usuario</td>
-    <td>Rol</td>
-    <td>Estatus</td>
-    <td>Accion</td>
-  </tr>
-  <tr *ngFor="let item of usuarios">
-    <td>{{ item.nombres }}</td>
-    <td>{{ item.apellidos }}</td>
-    <td>{{ item.usuario }}</td>
-    <td>{{ item.descripcion_rol }}</td>
-    <td>
-      <span
-        *ngIf="item.estatus == 1"
-        [style.background]="item.estatus == 1 ? 'green' : 'red'"
-        >Activo</span
-      ><span
-        *ngIf="item.estatus == 2"
-        [style.background]="item.estatus == 2 ? 'red' : 'green'"
-        >Inactivo</span
-      >
-    </td>
-    <td>
-      <button [routerLink]="['/editar-usuario', item.id_usuario]">
-        Editar
-      </button>
-    </td>
-  </tr>
-</table>
